@@ -50,8 +50,7 @@ export default function CustomInput(props) {
   return (
     <FormControl
       {...formControlProps}
-      className={formControlProps.className + " " + classes.formControl}
-      style={{ marginRight: "7px", marginLeft: "7px" }}
+      style={{ marginRight: "7px", marginLeft: "7px", color: "black" }}
     >
       {labelText !== undefined ? (
         <InputLabel
@@ -63,6 +62,7 @@ export default function CustomInput(props) {
         </InputLabel>
       ) : null}
       <Input
+        style={{ color: "black" }}
         classes={{
           root: marginTop,
           disabled: classes.disabled,

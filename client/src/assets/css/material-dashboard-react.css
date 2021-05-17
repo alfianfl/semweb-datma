@@ -495,3 +495,11 @@ footer ul li a:hover {
 * {
   letter-spacing: normal !important;
 }
+
+@media only screen and (max-width: 769px) {
+  .btn-search {
+    position: relative;
+    top: 20px;
+    left: 170px;
+  }
+}

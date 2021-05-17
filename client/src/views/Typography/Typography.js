@@ -68,7 +68,7 @@ export default function TypographyPage() {
         <h1>Our Member</h1>
         <div className="row">
           {team.map((e) => (
-            <div className="col-4">
+            <div className="col-lg-4 col-md-6 col-12 ">
               <div className="card mt-3 " style={{ width: "100%" }}>
                 <img
                   className="card-img-top"

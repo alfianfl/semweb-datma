@@ -25,9 +25,9 @@ const useStyles2 = makeStyles((theme) => ({
 }));
 export default function AdminNavbarLinks() {
   const classes2 = useStyles2();
-  const [inputData, setInputData] = useState("");
-  const [dataProdi, setDataProdi] = useState("");
-  const [dataAngkatan, setDataAngakatan] = useState("");
+  const [inputData, setInputData] = useState(null);
+  const [dataProdi, setDataProdi] = useState(null);
+  const [dataAngkatan, setDataAngakatan] = useState(null);
   const [modal, setModal] = useState(false);
 
   const toggle = () => {
@@ -35,20 +35,41 @@ export default function AdminNavbarLinks() {
   };
 
   const buttonHandler = () => {
-    window.location.href =
-      "hasilPencarian?nama=" +
-      inputData +
-      "&prodi=" +
-      dataProdi +
-      "&angkatan=" +
-      dataAngkatan;
+    if (inputData != null) {
+      if (inputData != null && dataProdi != null && dataAngkatan != null) {
+        window.location.href =
+          "hasilPencarian?nama=" +
+          inputData +
+          "&prodi=" +
+          dataProdi +
+          "&angkatan=" +
+          dataAngkatan;
+      } else if (inputData != null && dataProdi != null) {
+        window.location.href =
+          "hasilPencarian?nama=" + inputData + "&prodi=" + dataProdi;
+      } else if (inputData != null && dataAngkatan != null) {
+        window.location.href =
+          "hasilPencarian?nama=" + inputData + "&angkatan=" + dataAngkatan;
+      } else {
+        window.location.href = "hasilPencarian?nama=" + inputData;
+      }
+    } else if (dataProdi != null) {
+      if (dataProdi != null && dataAngkatan != null) {
+        window.location.href =
+          "hasilPencarian?prodi=" + dataProdi + "&angkatan=" + dataAngkatan;
+      } else {
+        window.location.href = "hasilPencarian?prodi=" + dataProdi;
+      }
+    } else if (dataAngkatan != null) {
+      window.location.href = "hasilPencarian?angkatan=" + dataAngkatan;
+    }
   };
 
   const classes = useStyles();
 
   return (
     <div>
-      <button onClick={toggle} href="#" className="btn btn-primary ">
+      <button onClick={toggle} href="#" className="btn btn-primary btn-search ">
         Search
       </button>
       <div className={classes.searchWrapper}>
